@@ -48,7 +48,7 @@ public class TextExcel {
       // Prints out instructions.
       if (input.contains("help")) {
       
-         printInstructions(input);
+         printGuide(input);
       }
       // Assigns data to reference.
       else if (input.contains(" = ")) {
@@ -134,80 +134,83 @@ public class TextExcel {
             highestLength = guideArray[i].length();
          }
       }
-
-      for (int i = -4; highestLength > i; i++) {
-         System.out.print("-");
+      System.out.print("┏");
+      for (int i = -2; highestLength > i; i++) {
+         System.out.print("━");
       }
-
-      System.out.println();
+      System.out.println("┓");
 
       for (int i = 0; guideArray.length > i; i++) {
          String spacing = "";
          for (int j = 0; (highestLength - guideArray[i].length()) > j; j++) {
             spacing = spacing + " ";
          }
-         System.out.println("| " + guideArray[i] + spacing + " |");
+         System.out.println("┃ " + guideArray[i] + spacing + " ┃");
          spacing = "";
       }
 
-      for (int i = -4; highestLength > i; i++) {
-         System.out.print("-");
+      System.out.print("┗");
+      for (int i = -2; highestLength > i; i++) {
+         System.out.print("━");
       }
-
-      System.out.println();
+      System.out.println("┛");
    }
    
    /**
    *  Prints out instructions for the user.
    */
-   public static void printInstructions(String command) {
+   public static void printGuide(String command) {
    
       if (command.equals("help")) {
-         String help = "TextExcel Help\nWelcome to TextExcel. Here are the list of commands.\n\n- quit\n- help [command]\n- print\n- clear\n- clear [cell]\n- clear [range]\n- [cell]\n- [cell] = [number]\n- [cell] = \"[string]\"[cell] = ( [formula] )\n- sorta [range]\n- sortb [range]\n\nFor more specific help on each command, type \"help [command]\". For example, say \"help [cell]\".";
+         String help = "TextExcel Help\nWelcome to TextExcel. Here are the list of commands.\n\n1. quit\n2. help [command]\n3. print\n4. clear\n5. clear [cell]\n6. clear [range]\n7. [cell]\n8. [cell] = [number]\n9. [cell] = \"[string]\"\n10. [cell] = ( [formula] )\n11. sorta [range]\n12. sortd [range]\n\nFor more specific help on each command, type \"help [number]\" or \"help [command]\".";
          formatGuide(help);
       }
-      else if (command.equals("help help")) {
-         String helpHelp = "Prints the help guide";
+      else if (command.equals("help 1")) {
+         String helpQuit = "Quits the spreadsheet application.";
+         formatGuide(helpQuit);
+      }
+      else if (command.equals("help 2") | command.equals("help help [command]")) {
+         String helpHelp = "Prints specific help on each command.";
          formatGuide(helpHelp);
       }
-      else if (command.equals("help print")) {
+      else if (command.equals("help 3") | command.equals("help print")) {
          String helpPrint = "Prints the entire spreadsheet.";
          formatGuide(helpPrint);
       }
-      else if (command.equals("help clear")) {
+      else if (command.equals("help 4") | command.equals("help clear")) {
          String helpClear = "Clears the entire spreadsheet.";
          formatGuide(helpClear);
       }
-      else if (command.equals("help clear [cell]")) {
-         String helpClearCell = "Clears the specified cell.\nExample: clear E7";
+      else if (command.equals("help 5") | command.equals("help clear [cell]")) {
+         String helpClearCell = "Clears the specified cell.\n\nExample: clear E7";
          formatGuide(helpClearCell);
       }
-      else if (command.equals("help clear [range]")) {
-         String helpClearRange = "Clears the specified range of cells.\nExample: clear B1 - D10";
+      else if (command.equals("help 6") | command.equals("help clear [range]")) {
+         String helpClearRange = "Clears the specified range of cells.\n\nExample: clear B1 - D10";
          formatGuide(helpClearRange);
       }
-      else if (command.equals("help [cell]")) {
-         String helpCell = "Displays the value of the specified cell.\nExample: G7";
+      else if (command.equals("help 7") | command.equals("help [cell]")) {
+         String helpCell = "Displays the value of the specified cell.\n\nExample: G7";
          formatGuide(helpCell);
       }
-      else if (command.equals("help [cell] = [number]")) {
-         String helpCellNumber = "Assigns a numeric value to the specified cell.\nExample: G3 = 37.1";
+      else if (command.equals("help 8") | command.equals("help [cell] = [number]")) {
+         String helpCellNumber = "Assigns a numeric value to the specified cell.\n\nExample: G3 = 37.1";
          formatGuide(helpCellNumber);
       }
-      else if (command.equals("help [cell] = \"[string]\"")) {
-         String helpCellString = "Assigns a string value to the speicified cell.\nExample: E5 = \"hello\"";
+      else if (command.equals("help 9") | command.equals("help [cell] = \"[string]\"")) {
+         String helpCellString = "Assigns a string value to the specified cell.\n\nExample: E5 = \"hello\"";
          formatGuide(helpCellString);
       }
-      else if (command.equals("help [cell] = ( [formula] )")) {
-         String helpCellFormula = "Assigns the formula value to the specified cell.\nExample: B4 = ( 2.0 * 5.1 )\nExample: B5 = ( avg D1 - F7 ), The avg operator takes a cell range and computer the sum.\nExample: B6 = ( sum D1 - F7 ), The sum operator takes a cell range and computes the sum.";
+      else if (command.equals("help 10") | command.equals("help [cell] = ( [formula] )")) {
+         String helpCellFormula = "Assigns the formula value to the specified cell.\n\nExample: B4 = ( 2.0 * 5.1 )\nExample: B5 = ( avg D1 - F7 ), The avg operator takes a cell range and computer the sum.\nExample: B6 = ( sum D1 - F7 ), The sum operator takes a cell range and computes the sum.";
          formatGuide(helpCellFormula);
       }
-      else if (command.equals("help sorta [range]")) {
-         String helpSortaRange = "Sorts the cell range into ascending order.\nExample: sorta B1 - B9";
+      else if (command.equals("help 11") | command.equals("help sorta [range]")) {
+         String helpSortaRange = "Sorts the cell range into ascending order.\n\nExample: sorta B1 - B9";
          formatGuide(helpSortaRange);
       }
-      else if (command.equals("help sortd [range]")) {
-         String helpSortdRange = "Sorts the cell range into descending order.\nExample: sortd B1 - B9";
+      else if (command.equals("help 12") | command.equals("help sortd [range]")) {
+         String helpSortdRange = "Sorts the cell range into descending order.\n\nExample: sortd B1 - B9";
          formatGuide(helpSortdRange);
       }
    }
