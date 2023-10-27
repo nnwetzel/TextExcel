@@ -204,7 +204,7 @@ public class Spreadsheet {
          for (int c = getColLocation(topLeftCell); c < getColLocation(bottomRightCell) + 1; c++) {
          
             String temp = referenceToData(getCellData(r, c));
-            Cell myCell = new Cell(temp);
+            //Cell myCell = new Cell(temp);
             temp = formatData(temp);
             
             // Adds each cell to result.
@@ -270,8 +270,8 @@ public class Spreadsheet {
    */
    public String rangeEvaluation(String data) {
    
-      int count = 0;
-      double result = 0.0;
+      //int count = 0;
+      //double result = 0.0;
       
       boolean sum = false;
       boolean avg = false;
