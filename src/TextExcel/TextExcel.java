@@ -120,6 +120,42 @@ public class TextExcel {
          System.out.println("You have entered invalid input.");
       }
    }
+
+   /**
+   *  Formats the help guide instructions into a box.
+   *  @instructions - The instructions.
+   */
+   public static void formatGuide(String guide) {
+      int highestLength = 0;
+      String[] guideArray = guide.split("\n");
+
+      for (int i = 0; guideArray.length > i; i++) {
+         if (guideArray[i].length() > highestLength) {
+            highestLength = guideArray[i].length();
+         }
+      }
+
+      for (int i = -4; highestLength > i; i++) {
+         System.out.print("-");
+      }
+
+      System.out.println();
+
+      for (int i = 0; guideArray.length > i; i++) {
+         String spacing = "";
+         for (int j = 0; (highestLength - guideArray[i].length()) > j; j++) {
+            spacing = spacing + " ";
+         }
+         System.out.println("| " + guideArray[i] + spacing + " |");
+         spacing = "";
+      }
+
+      for (int i = -4; highestLength > i; i++) {
+         System.out.print("-");
+      }
+
+      System.out.println();
+   }
    
    /**
    *  Prints out instructions for the user.
@@ -127,90 +163,52 @@ public class TextExcel {
    public static void printInstructions(String command) {
    
       if (command.equals("help")) {
-         System.out.println("--------------------------------------------------------------------");
-         System.out.println("| TextExcel Help                                                   |");
-         System.out.println("| Welcome to TextExcel. Here are the list of commands.             |");
-         System.out.println("|                                                                  |");
-         System.out.println("| - quit                                                           |");
-         System.out.println("| - help [command]                                                 |");
-         System.out.println("| - print                                                          |");
-         System.out.println("| - clear                                                          |");
-         System.out.println("| - clear [cell]                                                   |");
-         System.out.println("| - clear [range]                                                  |");
-         System.out.println("| - [cell]                                                         |");
-         System.out.println("| - [cell] = [number]                                              |");
-         System.out.println("| - [cell] = \"[string]\"                                            |");
-         System.out.println("| - [cell] = ( [formula] )                                         |");
-         System.out.println("| - sorta [range]                                                  |");
-         System.out.println("| - sortb [range]                                                  |");
-         System.out.println("|                                                                  |");
-         System.out.println("| For more specific help on each command, type \"help [command]\".   |");
-         System.out.println("--------------------------------------------------------------------");
+         String help = "TextExcel Help\nWelcome to TextExcel. Here are the list of commands.\n\n- quit\n- help [command]\n- print\n- clear\n- clear [cell]\n- clear [range]\n- [cell]\n- [cell] = [number]\n- [cell] = \"[string]\"[cell] = ( [formula] )\n- sorta [range]\n- sortb [range]\n\nFor more specific help on each command, type \"help [command]\". For example, say \"help [cell]\".";
+         formatGuide(help);
       }
       else if (command.equals("help help")) {
-         System.out.println("--------------------------");
-         System.out.println("| Prints the help guide. |");
-         System.out.println("--------------------------");
+         String helpHelp = "Prints the help guide";
+         formatGuide(helpHelp);
       }
       else if (command.equals("help print")) {
-         System.out.println("----------------------------------");
-         System.out.println("| Prints the entire spreadsheet. |");
-         System.out.println("----------------------------------");
+         String helpPrint = "Prints the entire spreadsheet.";
+         formatGuide(helpPrint);
       }
       else if (command.equals("help clear")) {
-         System.out.println("----------------------------------");
-         System.out.println("| Clears the entire spreadsheet. |");
-         System.out.println("----------------------------------");
+         String helpClear = "Clears the entire spreadsheet.";
+         formatGuide(helpClear);
       }
       else if (command.equals("help clear [cell]")) {
-         System.out.println("------------------------------");
-         System.out.println("| Clears the specified cell. |");
-         System.out.println("| Example: clear E7          |");
-         System.out.println("------------------------------");
+         String helpClearCell = "Clears the specified cell.\nExample: clear E7";
+         formatGuide(helpClearCell);
       }
       else if (command.equals("help clear [range]")) {
-         System.out.println("----------------------------------------");
-         System.out.println("| Clears the specified range of cells. |");
-         System.out.println("| Example: clear B1 - D10              |");
-         System.out.println("----------------------------------------");
+         String helpClearRange = "Clears the specified range of cells.\nExample: clear B1 - D10";
+         formatGuide(helpClearRange);
       }
       else if (command.equals("help [cell]")) {
-         System.out.println("---------------------------------------------");
-         System.out.println("| Displays the value of the specified cell. |");
-         System.out.println("| Example: G7                               |");
-         System.out.println("---------------------------------------------");
+         String helpCell = "Displays the value of the specified cell.\nExample: G7";
+         formatGuide(helpCell);
       }
       else if (command.equals("help [cell] = [number]")) {
-         System.out.println("--------------------------------------------------");
-         System.out.println("| Assigns a numeric value to the specified cell. |");
-         System.out.println("| Example: G3 = 37.1                             |");
-         System.out.println("--------------------------------------------------");
+         String helpCellNumber = "Assigns a numeric value to the specified cell.\nExample: G3 = 37.1";
+         formatGuide(helpCellNumber);
       }
       else if (command.equals("help [cell] = \"[string]\"")) {
-         System.out.println("--------------------------------------------------");
-         System.out.println("| Assigns a string value to the speicified cell. |");
-         System.out.println("| Example: E5 = \"hello\"                        |");
-         System.out.println("--------------------------------------------------");
+         String helpCellString = "Assigns a string value to the speicified cell.\nExample: E5 = \"hello\"";
+         formatGuide(helpCellString);
       }
       else if (command.equals("help [cell] = ( [formula] )")) {
-         System.out.println("--------------------------------------------------------------------------------------------");
-         System.out.println("| Assigns the formula value to the specified cell.                                         |");
-         System.out.println("| Example: B4 = ( 2.0 * 5.1 )                                                              |");
-         System.out.println("| Example: B5 = ( avg D1 - F7 ), The avg operator takes a cell range and computer the sum. |");
-         System.out.println("| Example: B6 = ( sum D1 - F7 ), The sum operator takes a cell range and computes the sum. |");
-         System.out.println("--------------------------------------------------------------------------------------------");
+         String helpCellFormula = "Assigns the formula value to the specified cell.\nExample: B4 = ( 2.0 * 5.1 )\nExample: B5 = ( avg D1 - F7 ), The avg operator takes a cell range and computer the sum.\nExample: B6 = ( sum D1 - F7 ), The sum operator takes a cell range and computes the sum.";
+         formatGuide(helpCellFormula);
       }
       else if (command.equals("help sorta [range]")) {
-         System.out.println("----------------------------------------------");
-         System.out.println("| Sorts the cell range into ascending order. |");
-         System.out.println("| Example: sorta B1 - B9                     |");
-         System.out.println("----------------------------------------------");
+         String helpSortaRange = "Sorts the cell range into ascending order.\nExample: sorta B1 - B9";
+         formatGuide(helpSortaRange);
       }
       else if (command.equals("help sortd [range]")) {
-         System.out.println("-----------------------------------------------");
-         System.out.println("| Sorts the cell range into descending order. |");
-         System.out.println("| Example: sortd B1 - B9                      |");
-         System.out.println("-----------------------------------------------");
+         String helpSortdRange = "Sorts the cell range into descending order.\nExample: sortd B1 - B9";
+         formatGuide(helpSortdRange);
       }
    }
 }
