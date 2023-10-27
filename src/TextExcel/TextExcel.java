@@ -3,7 +3,7 @@ package TextExcel;
 import java.util.Scanner;
 
 /**
-*  Nat and Safiya's TextExcel Project
+*  Nat Wetzel's TextExcel
 */
 
 public class TextExcel {
