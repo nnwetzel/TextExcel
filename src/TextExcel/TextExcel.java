@@ -134,26 +134,26 @@ public class TextExcel {
             highestLength = guideArray[i].length();
          }
       }
-      System.out.print("┏");
+      System.out.print("+");
       for (int i = -2; highestLength > i; i++) {
-         System.out.print("━");
+         System.out.print("-");
       }
-      System.out.println("┓");
+      System.out.println("+");
 
       for (int i = 0; guideArray.length > i; i++) {
          String spacing = "";
          for (int j = 0; (highestLength - guideArray[i].length()) > j; j++) {
             spacing = spacing + " ";
          }
-         System.out.println("┃ " + guideArray[i] + spacing + " ┃");
+         System.out.println("| " + guideArray[i] + spacing + " |");
          spacing = "";
       }
 
-      System.out.print("┗");
+      System.out.print("+");
       for (int i = -2; highestLength > i; i++) {
-         System.out.print("━");
+         System.out.print("-");
       }
-      System.out.println("┛");
+      System.out.println("+");
    }
    
    /**
@@ -162,7 +162,7 @@ public class TextExcel {
    public static void printGuide(String command) {
    
       if (command.equals("help")) {
-         String help = "TextExcel Help\nWelcome to TextExcel. Here are the list of commands.\n\n1. quit\n2. help [command]\n3. print\n4. clear\n5. clear [cell]\n6. clear [range]\n7. [cell]\n8. [cell] = [number]\n9. [cell] = \"[string]\"\n10. [cell] = ( [formula] )\n11. sorta [range]\n12. sortd [range]\n\nFor more specific help on each command, type \"help [number]\" or \"help [command]\".";
+         String help = "Welcome to TextExcel. Here are the list of commands.\n\n1. quit\n2. help [command]\n3. print\n4. clear\n5. clear [cell]\n6. clear [range]\n7. [cell]\n8. [cell] = [number]\n9. [cell] = \"[string]\"\n10. [cell] = ( [formula] )\n11. sorta [range]\n12. sortd [range]\n\nFor more specific help on each command, type \"help [number]\" or \"help [command]\".";
          formatGuide(help);
       }
       else if (command.equals("help 1")) {
